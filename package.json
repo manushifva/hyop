@@ -1,0 +1,48 @@
+{
+  "name": "hyop",
+  "version": "1.0.0",
+  "description": "HYOP (Hack Your Own PC) is a vulnarable web application that designed to help dummies learn web security.",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manushifva/hyop.git"
+  },
+  "keywords": [
+    "web",
+    "security",
+    "hacking"
+  ],
+  "author": "manushifva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manushifva/hyop/issues"
+  },
+  "homepage": "https://github.com/manushifva/hyop#readme",
+  "dependencies": {
+    "async": "^3.2.3",
+    "bcrypt": "^5.0.1",
+    "cakebase": "^4.0.2",
+    "chalk": "^4.1.2",
+    "death": "^1.1.0",
+    "dotenv": "^16.0.0",
+    "eta": "^1.12.3",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-router": "^10.1.1",
+    "koa-session": "^6.2.0",
+    "koa-static": "^5.0.0",
+    "koa2-ratelimit": "^1.1.1",
+    "random-port": "^0.1.0",
+    "sandboxed-fs": "^0.3.2",
+    "serverline": "^1.6.0",
+    "sqlite3": "^5.0.7",
+    "vm2": "^3.9.9"
+  }
+}

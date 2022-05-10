@@ -1,0 +1,61 @@
+<h2>Start a vulnarable app</h2>
+
+<div id = "app-list-parent">
+    <% it.list.forEach(app => { %>
+        <div class = "app-list" for = "<%= app.name %>">
+            <div class = "app-content">
+                <div class = "app-description">
+                    <b class = "app-title"><%= app.title %></b>
+                    <span><%= app.description %></span>
+                    <small class = "app-author">By: <b><%= app.author %></b></small>
+                </div>
+    
+                <div class = "app-side">
+                    <% if (app.installed) { %>
+                        <button class = "button" onclick = "startVulnApp('<%= app.name %>')">Start</button>
+                    <% } else { %>
+                        <button class = "button inactive">Not installed yet</button>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+
+    <center>
+        <span>Not seeing what you expect? Try to run <code>scan</code> in the HYOP console and refresh this page.</span>
+    </center>
+</div>
+
+<script>
+    function startVulnApp(name) {
+        stack = parseInt($(`.app-list[for="${name}"] .l-parent`).attr('stack'))
+        console.log(stack)
+        if (isNaN(stack)) {
+            $(`.app-list[for="${name}"]`).append('<div class = "app-active l-parent" stack = "1"><div class = "loader"></div></div>')
+        } else {
+            $(`.app-list[for="${name}"]`).attr('stack', stack + 1)
+        }
+        $.post('/account/startapp', {app: name}, function(data, status) {
+            stack = parseInt($(`.app-list[for="${name}"] .l-parent`).attr('stack'))
+            if (stack != 1) {
+                $(`.app-list[for="${name}"]`).attr('stack', stack - 1)
+            } else {
+                $(`.app-list[for="${name}"] .l-parent`).remove()
+            }
+
+            if (data.status == 'success') {
+                $(`.app-list[for="${name}"`).append(`<div class = "app-active" port = "${data.port}"><span>${data.port} </span><div class = "app-active-buttons"><a class = "button" href = '${data.url}'>Open</a><button class = "button" onclick = "stopVulnApp(${data.port})">Stop</button></div></div>`)
+            } else {
+                showAlert('Error!', `Failed to start app: ${data.message}`)
+            }
+        })
+    }
+
+    function stopVulnApp(port) {
+        $.post('/account/stopapp', {port: port.toString()}, function(data, status) {
+            if (data) {
+                $(`.app-active[port="${port}"]`).remove()
+            }
+        })
+    }
+</script>

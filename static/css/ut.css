@@ -1,0 +1,214 @@
+/* 
+
+utilities.css 
+
+this css works for restyling the default buttons, input, etc.
+this css also contains default color variables.
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+:root {
+    --main: #46c2af;
+    --main-shade: #40b6a4;
+    --main-inactive: #a4dcd4;
+    --input: #f0f0f0;
+    --bg: #ededed;
+    --light1: #dedede;
+    --light2: #d1d1d1;
+    --code: #282a36;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main);
+}
+
+button, input {
+    font: inherit;
+    border: none;
+}
+
+button:focus, input:focus {
+    outline: none;
+}
+
+code {
+    font-size: inherit;
+    background: var(--code);
+    color: white;
+    padding: 3px 9px;
+    border-radius: 3px;
+}
+
+spoiler {
+    background: var(--code);
+    color: var(--code);
+    border-radius: 3px;
+    transition: 0.2s;
+    user-select: none;
+    position: relative;
+    min-width: 51px;
+    text-align: center;
+    display: inline-block;
+    font-family: monospace;
+    font-size: inherit;
+    padding: 3px 9px;
+}
+
+spoiler::after {
+    top: 50%;
+    left: 50%;
+    content: 'Spoiler';
+    color: white;
+    font-family: monospace;
+    font-size: inherit;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+}
+
+spoiler:hover {
+    color: white;
+    transition: 0.2s;
+    user-select: all;
+}
+
+spoiler:hover::after {
+    opacity: 0;
+}
+
+.button {
+    background: var(--main);
+    color: black;
+    padding: 9px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.button:not(.inactive):hover {
+    background: var(--main-shade);
+    transition: 0.3s;
+}
+
+.button.inactive {
+    background: var(--main-inactive);
+}
+
+.input {
+    background: var(--input);
+    color: black;
+    padding: 9px 12px;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.label {
+    padding-bottom: 8px;
+}
+
+.alert {
+    width: 400px;
+    box-sizing: border-box;
+    background: white;
+    color: black;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(calc(100% + 16px));
+    margin-top: 16px;
+}
+
+@keyframes alert {
+    from {transform: translateX(calc(100% + 16px));}
+    to {transform: translateX(0);}
+}
+
+@keyframes alert-r {
+    from {transform: translateX(0);}
+    to {transform: translateX(calc(100% + 16px));}
+}
+
+.alert.inactive {
+    transform: translateX(0);
+    animation-name: alert-r;
+    animation-duration: 1s;
+    animation-direction: normal;
+}
+
+.alert.active {
+    transform: translateX(0);
+    animation-name: alert;
+    animation-duration: 1s;
+    animation-direction: normal;
+}
+
+.alert-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-loader {
+    width: 100%;
+    height: 10px;
+    background: var(--main-shade);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.alert-loader.anim {
+    transition: 5s;
+    width: 0%;
+}
+
+.alert-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
+
+.hor-loader {
+    width: 100%;
+    
+}
+
+#header {
+    background: #171717;
+    color: white !important;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    user-select: none;
+}
+
+#header>#title {
+    padding: 16px 32px;
+    color: white;
+}
+
+#header>#items {
+    order: 2;
+    margin-left: auto;
+    padding: 16px;
+}
+
+#items>*{
+    padding: 16px;
+    color: white;
+    transition: 0.2s;
+}
+
+#items>*:hover {
+    background: var(--main);
+    color: black;
+    transition: 0.2s;
+}

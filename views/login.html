@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Login | HYOP</title>
+        <link rel = "stylesheet" href = "/css/ut.css">
+        <link rel = "stylesheet" href = "/css/login.css">
+        <script src = "/js/jquery.js"></script>
+        <script src = "/js/alert.js"></script>
+    </head>
+
+    <body>
+        <%~ includeFile('../includes/head.html') %>
+
+        <div id = "container">
+            <div id = "main">
+                <form id = "form">
+                    <center>
+                        <h2>Login</h2>
+                        <span>Login to your account.</span>
+                    </center>
+
+                    <div for = "username" class = "label">Username: </div>
+                    <input type = "text" class = "input" id = "username" required>
+
+                    <div for = "password" class = "label">Password: </div>
+                    <input type = "password" class = "input" id = "password" required>
+
+                    <div id = "bottom">
+                        <button class = "button" id = "login">Login</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id = "side">
+                <!--
+                <div id = "help">
+                    <h1>Have no account?</h1>
+                    <span>
+                        For some security reasons, you can't do a self-register here. 
+                        If you run this server by yourself, you can add the user directly in the command line. 
+                        Meanwhile if you don't run this by yourself, you can contact the administrator for doing that.
+                    </span>
+                </div>
+                -->
+            </div>
+        </div>
+
+        <div class = "alert-container">
+
+        </div>
+
+        <script>
+            $('#login').on('click', function(event) {
+                event.preventDefault()
+
+                $.post('/account/login', {
+                    username: $('#username').val(),
+                    password: $('#password').val()
+                }, function(data, status) {
+                    if (data.status == 'success') {
+                        window.location.href = '/home'
+                    } else {
+                        showAlert('Error', data.message)
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

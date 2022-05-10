@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>QnA | HYOP</title>
+        <link rel = "stylesheet" href = "/css/ut.css">
+        <link rel = "stylesheet" href = "/css/common-page.css">
+        <style>
+            .question-container {
+                margin-bottom: 32px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <%~ includeFile('../includes/head.html') %>
+        <div id = "container">
+            <h1>QnA</h1>
+            
+            <p>Here's some frequently asked question about HYOP:</p>
+
+            <div class = "question-container">
+                <p><b>Q: Is HYOP free?</b></p>
+                <p>A: Yes. HYOP is licensed under <a href = "https://opensource.org/licenses/MIT">MIT License</a> that makes it free and open-source.</p>
+            </div>
+
+            <div class = "question-container">
+                <p><b>Q: How I login? What's the password?</b></p>
+                <p>A: Default login username and password is <code>admin</code> and <code>pass</code>.</p>
+            </div>
+
+            <div class = "question-container">
+                <p><b>Q: Why I can't register? How I register a new user?</b></p>
+                <p>A: We don't allow users do self-registering for security reason. To registering a new user, go to the console and type <code>register [username] [password]</code> and press enter.</p>
+            </div>
+
+            <div class = "question-container">
+                <p><b>Q: How I install the app?</b></p>
+                <p>A: Go to the console and type <code>install [app name]</code> and press enter.</p>
+            </div>
+        </div>
+    </body>
+</html>

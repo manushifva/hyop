@@ -1,0 +1,21 @@
+{
+  "name": "vuln-login",
+  "version": "1.0.0",
+  "description": "Vulnarable login system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-router": "^10.1.1",
+    "koa-session": "^6.2.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.0.0"
+  }
+}

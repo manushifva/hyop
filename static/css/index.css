@@ -1,0 +1,24 @@
+/* 
+
+index.css
+
+css for the front page (index.html)
+
+*/
+
+body { 
+    overflow-y: hidden;
+    background: var(--main);
+}
+
+#container {
+    padding: 32px;
+    margin-left: 32px;
+    width: 50%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}

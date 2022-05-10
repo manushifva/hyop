@@ -1,0 +1,10 @@
+{
+    "name": "nocaptcha",
+    "title": "Captchaless Login",
+    "description": "Captcha is pretty important for making the login form secure.",
+    "challange": ["brute force"],
+    "difficulty": "easy",
+    "author": "manushifva",
+    "default_page": "/",
+    "root": "app.js"
+}

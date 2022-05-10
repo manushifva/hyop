@@ -1,0 +1,11 @@
+/* 
+
+common-page.css
+
+css for common pages like qna (qna.html) and preview (preview.html)
+
+*/
+
+#container {
+    padding: 16px;
+}
