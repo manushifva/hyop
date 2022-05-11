@@ -1,7 +1,6 @@
 process.stdout.write('\x1Bc')
 
 const chalk = require('chalk')
-const death = require('death')
 const serverline = require('serverline')
 const user = require('../helper/user')
 
@@ -37,6 +36,26 @@ class hyopCL {
                 name: 'listuser',
                 description: 'List all of the users.',
                 usage: 'listuser'
+            }, 
+            {
+                name: 'clear',
+                description: 'Clear the console.',
+                usage: 'clear'
+            },
+            {
+                name: 'register',
+                description: 'Register an user.',
+                usage: 'register [username] [password]'
+            }, 
+            {
+                name: 'unregister',
+                description: 'Unregister an user.',
+                usage: 'unregister [username]'
+            },
+            {
+                name: 'active',
+                description: 'Get informations about active apps.',
+                usage: 'active'
             }
         ]
 
@@ -50,8 +69,9 @@ class hyopCL {
         this.userAuth = new user()
 
         var t = this
-        death(function() {
-            t.exit()
+        process.on('SIGINT', function () {
+            t.cb()
+            process.exit(0)
         })
     }
 
@@ -77,7 +97,7 @@ class hyopCL {
           
             if (serverline.isMuted())
             serverline.setMuted(false)
-        })          
+        })
     }
     
     async execute(input) {
@@ -120,6 +140,8 @@ class hyopCL {
                     })
                 })
                 break
+            case 'clear':
+                process.stdout.write('\x1Bc')
         }
     }
 

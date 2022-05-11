@@ -57,6 +57,11 @@ app.listen(process.env.PORT || 3000, function() {
 })
 
 // on shutdown
+process.on('SIGINT', function () {
+    t.cb()
+    process.exit(0)
+})
+
 function cleanup() {
     var keys = Object.keys(activeVM)
     for (x = 0; x <= keys.length - 1; x++) {
