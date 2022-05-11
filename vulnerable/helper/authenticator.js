@@ -7,6 +7,7 @@ module.exports = function(a) {
     return async function (ctx, next) {
         query = ctx.request.query
     
+        ctx.session.user = undefined
         if (!ctx.session.user) {
             if (query.user && query.auth) {
                 try {

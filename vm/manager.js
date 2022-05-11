@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { fork } = require('child_process')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
@@ -16,7 +18,7 @@ class vmManager {
             var secret = crypto.randomBytes(64).toString('hex')
             this.token = jwt.sign(user, secret)
 
-            this.forked = fork(path.join(__dirname, 'engine'), {silent: true})
+            this.forked = fork(path.join(__dirname, 'engine'), {silent: true, execArgv: [`--max-old-space-size=${parseInt(process.env.MEMORY_LIMIT)}`]})
             this.forked.send({app: app, secret: secret})
 
             var t = this
