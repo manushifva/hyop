@@ -71,10 +71,22 @@ r.get('/partial/:name', async function(ctx) {
     var name = ctx.params.name
 
     switch (name) {
+        case 'home':
+            await db.app.get(function(data) {if (data.installed == true) return true}).then(async function(data) {
+                ctx.body = await eta.renderFile('home.html')
+            })
+            break
         case 'start':
             await db.app.get(function() {return true}).then(async function(data) {
                 ctx.body = await eta.renderFile('start.html', {list: data})
             })
+            break
+        case 'settings':
+            ctx.body = await eta.renderFile('settings.html')
+            break
+        default:
+            ctx.body = 'no partial, yet.'
+            break
     }
 })
 

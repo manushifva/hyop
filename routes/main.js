@@ -7,9 +7,13 @@ r.get('/', async function(ctx) {
     ctx.body = await eta.renderFile('index.html')
 })
 
-r.get('/home', async function(ctx) {
+r.get('/panel', async function(ctx) {
+    ctx.redirect('/panel/home')
+})
+
+r.get('/panel/:partial', async function(ctx) {
     if (ctx.session.user) {
-        ctx.body = await eta.renderFile('home.html')
+        ctx.body = await eta.renderFile('panel.html')
     } else {
         ctx.redirect('/login')
         return
@@ -18,7 +22,7 @@ r.get('/home', async function(ctx) {
 
 r.get('/login', async function(ctx) {
     if (ctx.session.user) {
-        ctx.redirect('/home')
+        ctx.redirect('/panel')
         return
     } else {
         ctx.body = await eta.renderFile('login.html')

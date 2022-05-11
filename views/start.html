@@ -2,7 +2,7 @@
 
 <div id = "app-list-parent">
     <% it.list.forEach(app => { %>
-        <div class = "app-list" for = "<%= app.name %>">
+        <div class = "app-list" for = "<%= app.name %>" id = "app-nav-<%= app.name %>">
             <div class = "app-content">
                 <div class = "app-description">
                     <b class = "app-title"><%= app.title %></b>

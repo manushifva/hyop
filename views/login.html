@@ -57,9 +57,13 @@
                     password: $('#password').val()
                 }, function(data, status) {
                     if (data.status == 'success') {
-                        window.location.href = '/home'
+                        if (data.status == 'success') {
+                        window.location.href = '/panel'
+                        } else {
+                            showAlert('Error', data.message)
+                        }
                     } else {
-                        showAlert('Error', data.message)
+                        showAlert('Error', `Failed to login with ${data.status} error code.`)
                     }
                 })
             })
